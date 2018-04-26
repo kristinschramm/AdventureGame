@@ -6,17 +6,25 @@ using System.Threading.Tasks;
 
 namespace AdventureGame
 {
-    class Environment2
+    class Floor
     {
         // member variables (HAS A)
+        Room room;
+        string stairs;
+        string hallway;
+        string entry;
+        string exit;
 
         //constructor
 
-        public Environment2()
+        public Floor()
         {
 
         }
 
         // member methods
+            //responds to player entering floor
+            //responds to exiting floor
+            //change floor
     }
 }
