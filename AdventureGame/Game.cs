@@ -20,11 +20,12 @@ namespace AdventureGame
         public Game()
         {
             player = new Player();
-            outside = new Outside();
+            outside = new Outside(this);
             groundFloor = new Floor();
             secondFloor = new Floor();
-            player.CreateNewPlayer();
             BeginGame();
+            
+            
             WalkUpToHouse();
             Console.ReadKey();
         }
@@ -32,27 +33,14 @@ namespace AdventureGame
         // member methods
         public void BeginGame()
         {
-            Console.WriteLine("Hey " + player.name +"! Check out that creepy looking house on the hill! Want to go check it out?");
-            string userInput = Console.ReadLine();
-            if (userInput == "Yes")
-            {
-                Console.WriteLine("Awesome! Let's go!" );
-                return;
-            }
-            else if (userInput == "No")
-            {
-                Console.WriteLine("Aww don't be a chicken, let's go!");
-                return;
-            }
-            else {
-                Console.WriteLine("Hmm, I didn't understand that response, please say yes or no");
-                BeginGame();
-            }
+            player.CreateNewPlayer();
+            Console.WriteLine("Hey " + player.name +"! Check out that creepy looking house on the hill! Want to go check it out? Yes or No");
+            GetUserResponse();       
 
         }
         public void WalkUpToHouse()
         {
-            
+            WalkUpToHouseRunMenu();
         }
 
         private void WalkUpToHouseDisplayMenuOptions()
@@ -72,6 +60,7 @@ namespace AdventureGame
             switch (input)
             {
                 case "1":
+                    outside.FrontDoorRunMenu();
                      break;
                 case "2":
                     break;
@@ -85,6 +74,24 @@ namespace AdventureGame
             }
             Console.WriteLine("\n====================================================\n");
             }
-
+            public void GetUserResponse()
+        {
+            string userInput = Console.ReadLine();
+            if (userInput == "Yes" || userInput == "yes" || userInput == "y")
+            {
+                Console.WriteLine("Awesome! Let's go!");
+                return;
+            }
+            else if (userInput == "No" || userInput == "no" || userInput == "n")
+            {
+                Console.WriteLine("Aww don't be a chicken, let's go!");
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Hmm, I didn't understand that response, please say Yes or No");
+                GetUserResponse();
+            }
+        }
     }
 }
