@@ -9,7 +9,7 @@ namespace AdventureGame
     class Game
     {
         // member variables (HAS A)
-        Player player;
+        Player player1;
         Outside outside;
         Floor groundFloor;
         Floor secondFloor;
@@ -19,7 +19,7 @@ namespace AdventureGame
 
         public Game()
         {
-            player = new Player();
+            player1 = new Player();
             outside = new Outside(this);
             groundFloor = new Floor();
             secondFloor = new Floor();
@@ -33,7 +33,7 @@ namespace AdventureGame
         // member methods
         public void BeginGame()
         {
-            player.CreateNewPlayer();
+            player1.CreateNewPlayer();
             Console.WriteLine("Hey " + player.name +"! Check out that creepy looking house on the hill! Want to go check it out? Yes or No");
             GetUserResponse();       
 
